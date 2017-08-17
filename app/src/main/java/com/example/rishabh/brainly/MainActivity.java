@@ -1,5 +1,7 @@
 package com.example.rishabh.brainly;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +19,12 @@ public class MainActivity extends AppCompatActivity {
 
     Button GoButton;
     Button playAgain;
+    Button shareButton;
     TextView sumText;
     int locationOfAnswer;
     int incorrectAnswer;
     int score = 0;
+    int scoreString;
     int totalQuestions = 0;
     Button button0;
     Button button1;
@@ -105,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         scoreText.setText("0/0");
         timerText.setText("60s");
         correctText.setText("");
+
         playAgain.setVisibility(View.INVISIBLE);
 
         button0.setEnabled(true);
@@ -119,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
 
                 timerText.setText(String.valueOf(millisUntilFinished/1000) + "s");
+              //  if (Integer.parseInt(timerText.toString()) <= 10)
+                {
+                   timerText.setTextColor(Color.parseColor("#FF0000"));
+                    sumText.setTextColor(Color.parseColor("#1565C0"));
+                    scoreText.setTextColor(Color.parseColor("#6A1B9A"));
+                }
             }
 
             @Override
@@ -127,15 +138,35 @@ public class MainActivity extends AppCompatActivity {
                 timerText.setText("0s");
                 correctText.setText("your score: " + Integer.toString(score) + "/" + Integer.toString(totalQuestions));
                 playAgain.setVisibility(View.VISIBLE);
+                scoreString = score;
+                shareButton.setVisibility(View.VISIBLE);
                 button0.setEnabled(false);
                 button1.setEnabled(false);
                 button2.setEnabled(false);
                 button3.setEnabled(false);
+                sumText.setText("");
+             //  timerText.setTextColor(Color.parseColor("#FFFFFF"));
 
             }
         }.start();
 
         generateQuestion(findViewById(R.id.button3));
+    }
+
+    void share (View view)
+    {
+        try {
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_SUBJECT, "BRAINLY");
+            String sAux = "\nHey! I scored " + scoreString + " out of "+ totalQuestions+" on BRAINLY. Get it here :-   https://github.com/rishabh-modi/Brainly ";
+          //  sAux = sAux + "https://play.google.com/store/apps/details?id=Orion.Soft \n\n";
+            i.putExtra(Intent.EXTRA_TEXT, sAux);
+            startActivity(Intent.createChooser(i, "choose one"));
+        } catch(Exception e) {
+            //e.toString();
+        }
+
     }
 
     @Override
@@ -153,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
         scoreText = (TextView)findViewById(R.id.scoreText);
         timerText = (TextView)findViewById(R.id.timerText);
         playAgain = (Button)findViewById(R.id.playAgainButton);
+        shareButton = (Button)findViewById(R.id.shareButton);
         relativeLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
 
 
