@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     int incorrectAnswer;
     int score = 0;
     int scoreString;
-    int totalQuestions = 0;
+    int totalQuestions =  0;
     Button button0;
     Button button1;
     Button button2;

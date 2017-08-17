@@ -180,7 +180,7 @@
         android:background="@color/colorPrimary"
         android:elevation="0dp"
         android:onClick="share"
-        android:text="share "
+        android:text="SHARE "
         android:textColor="@android:color/background_light"
         android:visibility="invisible"
         android:layout_alignParentBottom="true"

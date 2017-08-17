@@ -38,7 +38,7 @@
         android:layout_marginBottom="14dp"
         android:background="@android:color/transparent"
         android:scaleX="0.5"
-        android:scaleY="0.5"
+        android:scaleY="0.51"
         app:srcCompat="@drawable/brain" />
 
 </RelativeLayout>

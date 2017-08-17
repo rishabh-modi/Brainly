@@ -33,7 +33,7 @@ public class splash extends AppCompatActivity {
 
 
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom);
-        //  animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
+        //    animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
         //  animation3 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate2);
         // animation4 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom);
 
