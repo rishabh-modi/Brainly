@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button GoButton;
     Button playAgain;
+    Button showScore;
     Button shareButton;
     TextView sumText;
     int locationOfAnswer;
@@ -132,12 +133,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void onFinish() {
 
                 timerText.setText("0s");
                 correctText.setText("your score: " + Integer.toString(score) + "/" + Integer.toString(totalQuestions));
                 playAgain.setVisibility(View.VISIBLE);
+                showScore.setVisibility(View.VISIBLE);
                 scoreString = score;
                 shareButton.setVisibility(View.VISIBLE);
                 button0.setEnabled(false);
@@ -153,21 +156,7 @@ public class MainActivity extends AppCompatActivity {
         generateQuestion(findViewById(R.id.button3));
     }
 
-    void share (View view)
-    {
-        try {
-            Intent i = new Intent(Intent.ACTION_SEND);
-            i.setType("text/plain");
-            i.putExtra(Intent.EXTRA_SUBJECT, "BRAINLY");
-            String sAux = "\nHey! I scored " + scoreString + " out of "+ totalQuestions+" on BRAINLY. Get it here :-   https://github.com/rishabh-modi/Brainly ";
-          //  sAux = sAux + "https://play.google.com/store/apps/details?id=Orion.Soft \n\n";
-            i.putExtra(Intent.EXTRA_TEXT, sAux);
-            startActivity(Intent.createChooser(i, "choose one"));
-        } catch(Exception e) {
-            //e.toString();
-        }
 
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,8 +175,33 @@ public class MainActivity extends AppCompatActivity {
         playAgain = (Button)findViewById(R.id.playAgainButton);
         shareButton = (Button)findViewById(R.id.shareButton);
         relativeLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
+        showScore = (Button)findViewById(R.id.scoreButton);
 
 
 
     }
+    public void scoreButtonm(View view)
+    {
+        Intent intent = new Intent(getBaseContext(), score.class);
+        intent.putExtra("score", Integer.toString(score));
+        startActivity(intent);
+
+    }
+
+    public void shareButtonm(View view)
+    {
+        try {
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_SUBJECT, "BRAINLY");
+            String sAux = "\nHey! I scored " + scoreString + " out of "+ totalQuestions+" on BRAINLY. Get it here :-   https://github.com/rishabh-modi/Brainly ";
+            //  sAux = sAux + "https://play.google.com/store/apps/details?id=Orion.Soft \n\n";
+            i.putExtra(Intent.EXTRA_TEXT, sAux);
+            startActivity(Intent.createChooser(i, "choose one"));
+        } catch(Exception e) {
+            //e.toString();
+        }
+
+    }
+
 }

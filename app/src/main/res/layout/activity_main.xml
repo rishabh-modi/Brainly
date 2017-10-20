@@ -177,14 +177,29 @@
         android:id="@+id/shareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:background="@color/colorPrimary"
         android:elevation="0dp"
-        android:onClick="share"
+        android:onClick="shareButtonm"
         android:text="SHARE "
         android:textColor="@android:color/background_light"
-        android:visibility="invisible"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/scoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:elevation="0dp"
+        android:onClick="scoreButtonm"
+        android:text="SCORE "
+        android:textColor="@android:color/background_light"
+        android:visibility="invisible" />
+
+
 
 </RelativeLayout>
